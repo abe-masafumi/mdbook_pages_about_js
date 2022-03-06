@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="config/mdbook_1.html">mdbook の使用方法</a></li><li class="chapter-item expanded affix "><a href="config/paiza.html">paiza</a></li><li class="chapter-item expanded affix "><a href="config/markdown.html">Markdown 記法</a></li><li class="chapter-item expanded affix "><a href="config/githubactions.html">github actions</a></li><li class="chapter-item expanded affix "><a href="config/testcode.html">testcode-jest</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="array_1.html"><strong aria-hidden="true">1.</strong> 配列の操作</a></li><li class="chapter-item expanded "><a href="object_1.html"><strong aria-hidden="true">2.</strong> 連想配列の操作</a></li><li class="chapter-item expanded "><a href="string_1.html"><strong aria-hidden="true">3.</strong> 文字列の操作</a></li><li class="chapter-item expanded "><a href="console.html"><strong aria-hidden="true">4.</strong> console出力</a></li><li class="chapter-item expanded "><a href="calculation.html"><strong aria-hidden="true">5.</strong> calculation</a></li><li class="spacer"></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="config/paiza.html"><strong aria-hidden="true">1.</strong> paiza</a></li><li class="chapter-item expanded "><a href="config/testcode.html"><strong aria-hidden="true">2.</strong> testcode-jest</a></li><li class="chapter-item expanded "><a href="array_1.html"><strong aria-hidden="true">3.</strong> 配列の操作</a></li><li class="chapter-item expanded "><a href="object_1.html"><strong aria-hidden="true">4.</strong> 連想配列の操作</a></li><li class="chapter-item expanded "><a href="string_1.html"><strong aria-hidden="true">5.</strong> 文字列の操作</a></li><li class="chapter-item expanded "><a href="console.html"><strong aria-hidden="true">6.</strong> console出力</a></li><li class="chapter-item expanded "><a href="calculation.html"><strong aria-hidden="true">7.</strong> calculation</a></li><li class="spacer"></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,11 +134,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#mdbookの使用方法" id="mdbookの使用方法">mdbookの使用方法</a></h1>
-<hr />
-<p><a href="https://docs.rs/crate/mdbook/0.4.13">document</a></p>
-<p><a href="https://rust-lang.github.io/mdBook/">document</a></p>
-<h1><a class="header" href="#paiza" id="paiza">paiza</a></h1>
+                        <h1><a class="header" href="#paiza" id="paiza">paiza</a></h1>
 <hr />
 <p><a href="https://paiza.jp/career/mypage">paiza</a></p>
 <ul>
@@ -172,193 +168,6 @@ console.log(Datalist)
 </code></pre>
 </li>
 </ul>
-<hr />
-<ul>
-<li>合格しなかった問題</li>
-</ul>
-<ol>
-<li>
-<p>B099:台風の接近 再チャレンジ採点結果</p>
-<blockquote>
-<p>理由</p>
-</blockquote>
-<blockquote>
-</blockquote>
-<pre><code class="language-js">process.stdin.resume();
-process.stdin.setEncoding(&quot;utf8&quot;);
-// 自分の得意な言語で
-// Let's チャレンジ！！
-var lines = [];
-var reader = require(&quot;readline&quot;).createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-reader.on(&quot;line&quot;, (line) =&gt; {
-  lines.push(line);
-});
-reader.on(&quot;close&quot;, () =&gt; {
-  const line0 = lines[0].split(&quot; &quot;);
-  const maxcount = Number(line0[1]);
-
-  let array = [];
-  for (let i = 1; i &lt; lines.length; i++) {
-    array.push(lines[i].split(&quot; &quot;));
-  }
-
-  const transpose = (a) =&gt; a[0].map((_, c) =&gt; a.map((r) =&gt; r[c]));
-  const arr = transpose(array);
-
-  let elsecount = 0;
-  let count = 0;
-  let str = &quot;&quot;;
-  // console.log(arr)
-  arr.forEach((value, index, thisarray) =&gt; {
-    for (let u = 0; u &lt; value.length; u++) {
-      if (value[u] &lt; Number(maxcount)) {
-        count++;
-        if (count == 3) {
-          let num = index + 1;
-          str += String(num) + &quot; &quot;;
-        }
-      } else {
-        elsecount++;
-      }
-    }
-    count = 0;
-  });
-  if (elsecount == arr.length * arr[0].length) {
-    console.log(&quot;wait&quot;);
-  }
-  elsecount = 0;
-
-  console.log(str.trim());
-});
-</code></pre>
-</li>
-<li>
-<p>C006:ハイスコアランキング</p>
-<blockquote>
-<p>理由</p>
-</blockquote>
-<blockquote>
-<p>Math.round()が切り捨てになる(バグ？)</p>
-</blockquote>
-<blockquote>
-<p>解決</p>
-</blockquote>
-<blockquote>
-<p>四捨五入するタイミングが間違っていた</p>
-</blockquote>
-<pre><code class="language-js">process.stdin.resume();
-process.stdin.setEncoding(&quot;utf8&quot;);
-// 自分の得意な言語で
-// Let's チャレンジ！！
-var lines = [];
-var reader = require(&quot;readline&quot;).createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-reader.on(&quot;line&quot;, (line) =&gt; {
-  lines.push(line);
-});
-reader.on(&quot;close&quot;, () =&gt; {
-  function sum(array) {
-    var sum = 0;
-    for (var i = 0; i &lt; array.length; i++) {
-      sum += array[i];
-    }
-    return sum;
-  }
-
-  const lines0 = lines[0].split(&quot; &quot;);
-  const lines1 = lines[1].split(&quot; &quot;);
-
-  let array = [];
-  for (let i = 2; i &lt; Number(lines0[1]) + 2; i++) {
-    array.push(lines[i].split(&quot; &quot;));
-  }
-
-  // console.log(array[0][0])
-  let results = new Array(Number(lines0[1]));
-
-  for (let u = 0; u &lt; Number(lines0[1]); u++) {
-    results[u] = new Array(Number(lines0[0]));
-    for (let i = 0; i &lt; Number(lines0[0]); i++) {
-      // console.log(Number(lines1[i]))
-      let a = Number(array[u][i]) * Number(lines1[i]);
-      &lt;!-- ここの動作がおかしい↓ ()--&gt;
-      let math = Math.round(a);
-      results[u][i] = math;
-    }
-    results[u] = sum(results[u]);
-  }
-
-  function top_x(array, x) {
-    let arr = [];
-    for (let i = 0; i &lt; x; i++) {
-      const maxindex = array.indexOf(Math.max(...array));
-      arr.push(...array.splice(maxindex, 1));
-    }
-    // console.log(arr); // [ 7, 6, 5 ]
-    return arr;
-  }
-  const anser = top_x(results, Number(lines0[2]));
-  tmp = anser.join(&quot;,&quot;);
-
-  console.log(tmp.replace(/,/g, &quot;\n&quot;));
-}); //238.5  483.6 64 35971.2
-</code></pre>
-</li>
-</ol>
-<h1><a class="header" href="#markdown記法" id="markdown記法">Markdown記法</a></h1>
-<hr />
-<p><a href="https://qiita.com/tbpgr/items/989c6badefff69377da7">Qiita Markdown記法 サンプル集</a></p>
-<p><a href="https://notepm.jp/help/how-to-markdown">NotePM Markdown記法/書き方（見出し・表・リンク・画像・文字色など）</a></p>
-<p><a href="https://qiita.com/tbpgr/items/989c6badefff69377da7">Qiita マークダウン記法 一覧表・チートシート</a></p>
-<p><a href="https://www.wzsoft.jp/wzme/help/markdown.html">WZ Markdown Editor マニュアル</a></p>
-<h1><a class="header" href="#github-actions" id="github-actions">github actions</a></h1>
-<hr />
-<!-- [document](https://docs.github.com/en/actions) -->
-<p><a href="https://docs.cypress.io/guides/continuous-integration/github-actions#Cypress-GitHub-Action">document</a></p>
-<ul>
-<li>エラー 一覧</li>
-</ul>
-<ol>
-<li><a href="https://github.com/actions/setup-node/issues/317">Error: Cache folder path is retrieved for npm but doesn't exist on disk: /home/runner/.npm</a></li>
-</ol>
-<blockquote>
-<p>解決</p>
-</blockquote>
-<pre><code class="language-yml">name: Node.js CI
-
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-          # cacheを設定する場合はcache用のフォルダを設定しないといけないのでコメントアウト
-          # cache: &quot;npm&quot;
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
-</code></pre>
 <h1><a class="header" href="#jest" id="jest">jest</a></h1>
 <hr />
 <p><a href="https://jestjs.io/docs/getting-started">document</a></p>
